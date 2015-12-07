@@ -21,7 +21,7 @@ $admin = new Admin_User();
 $pageData->content = include_once "controllers/admin/login.php";
 
 if( $admin->isLoggedIn() ) {
-  $pageData->content = include_once "views/admin/admin-navigation.php";
+  $pageData->content .= include_once "views/admin/admin-navigation.php";
   $navigationIsClicked = isset( $_GET['page']);
   if ($navigationIsClicked) {
     $controller = $_GET['page'];
@@ -30,16 +30,8 @@ if( $admin->isLoggedIn() ) {
   }
   $pathToController = "controllers/admin/$controller.php";
   $pageData->content .= include_once $pathToController;
+
 }
 
 $page = include_once "views/page.php";
-
-if ( $admin->isLoggedIn() ){
-  $view = include_once "views/admin/logout-form-html.php";
-//} else {
-//  $view = include_once "views/admin/login-form-html.php";
-}
-
-echo $page.$view;
-
-var_dump($_SESSION);
+echo $page;
