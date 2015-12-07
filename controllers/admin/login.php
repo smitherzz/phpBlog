@@ -16,9 +16,10 @@ if ( $loginFormSubmitted ) {
   }
 }
 
-$loggingOut = isset( $_POST['log-out'] );
+$loggingOut = isset( $_POST['logout'] );
 if ( $loggingOut ){
   $admin->logout();
+
 }
 
 if ( $admin->isLoggedIn() ){
